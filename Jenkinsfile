@@ -30,7 +30,7 @@ pipeline
             {
                 script
                 {
-                    String path = scannerHome
+                    String path = scannerHome.text
                     path.replace(" ", "^")
                 } 
                 withSonarQubeEnv('SONAR_LOCAL')
