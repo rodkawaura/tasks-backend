@@ -23,7 +23,7 @@ pipeline
         {
             environment 
             {
-                scannerHome = tool 'SONNAR_SCANNER'
+                scannerHome = tool 'SONAR_SCANNER'
             }
             steps
             {
