@@ -26,8 +26,11 @@ pipeline
                 scannerHome = tool 'SONAR_SCANNER'
             }
 
-            scannerHome.replace(" ", "^") 
-                    
+            script
+            {
+                scannerHome.replace(" ", "^")
+            } 
+
             steps
             {
                 withSonarQubeEnv('SONAR_LOCAL')
