@@ -30,7 +30,7 @@ pipeline
             {
                 script
                 {
-                    scannerHome.replace(" ", "^")
+                    scannerHome.replace(" ", "_")
                 } 
                 withSonarQubeEnv('SONAR_LOCAL')
                 {
