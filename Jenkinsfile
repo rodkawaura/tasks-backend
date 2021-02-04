@@ -31,7 +31,7 @@ pipeline
                 script
                 {
                     scannerHome.replace(" ", "^")
-                    bat echo scannerHome
+                    println(scannerHome)
                 } 
                 withSonarQubeEnv('SONAR_LOCAL')
                 {
