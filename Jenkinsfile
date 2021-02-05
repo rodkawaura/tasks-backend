@@ -60,8 +60,12 @@ pipeline
         {
             steps
             {
-                git credentialsId: 'github_login', url: 'https://github.com/rodkawaura/tasks-api-test'
-                //bat 'mvn test'
+                dir('api-test')
+                {
+                    git credentialsId: 'github_login', url: 'https://github.com/rodkawaura/tasks-api-test'
+                    //bat 'mvn test'
+                }
+                
             }
         }
 
@@ -70,9 +74,11 @@ pipeline
             steps
             {
                 dir('frontend')
+                {
                     git credentialsId: 'github_login', url: 'https://github.com/rodkawaura/tasks-frontend'
                     bat 'mvn clean package'
                     deploy adapters: [tomcat8(credentialsId: 'TomcatLogin', path: '', url: 'http://localhost:8001/')], contextPath: 'tasks', war: 'target/tasks.war'
+                }
             }
         }
 
