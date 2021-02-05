@@ -20,7 +20,7 @@ pipeline
         }
 
         
-        /*stage ('Sonar Analysis')
+        stage ('Sonar Analysis')
         {
             environment 
             {
@@ -36,12 +36,12 @@ pipeline
                 withSonarQubeEnv('SONAR_LOCAL')
                 {
                     bat "echo ${scannerHome}"*/
-                    //bat "${scannerHome}/bin/sonar-scanner -e -Dsonar.projectKey=DeployBack -Dsonar.host.url=http://localhost:9000 -Dsonar.login=5b503bd807a047a8052198b8aaab046bb7bfbf6c -Dsonar.java.binaries=target -Dsonar.coverage.exclusions=**/.mvn/**,**/src/test/**,**/model/**,**Application.java"
-               /* }
+                    bat "\"${scannerHome}/bin/\"sonar-scanner -e -Dsonar.projectKey=DeployBack -Dsonar.host.url=http://localhost:9000 -Dsonar.login=5b503bd807a047a8052198b8aaab046bb7bfbf6c -Dsonar.java.binaries=target -Dsonar.coverage.exclusions=**/.mvn/**,**/src/test/**,**/model/**,**Application.java"
+                }
             }
-        }*/
+        }
 
-       /* stage ('Quality Gate')
+        stage ('Quality Gate')
         {
             steps
             {
@@ -52,7 +52,7 @@ pipeline
                 }
             }
         }
-        */
+        
 
         stage ('Deploy Backend')
         {
@@ -61,7 +61,6 @@ pipeline
                 deploy adapters: [tomcat8(credentialsId: 'TomcatLogin', path: '', url: 'http://localhost:8001/')], contextPath: 'tasks-backend', war: 'target/tasks-backend.war'
             }
         }
-
 
     }
 }
